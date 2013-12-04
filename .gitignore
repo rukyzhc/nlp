@@ -1,9 +1,9 @@
 #target
-./target/*
+target/**
 *.class
 *.jar
 
 #project
 .classpath
 .settings
-.project
+
