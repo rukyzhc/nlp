@@ -60,20 +60,22 @@ public final class PipelineProcessor implements Processor {
 			String stem = token.get(LemmaAnnotation.class);
 
 			Word w = new Word(word);
-			w.setStem(stem);
-			w.setPOS(pos);
-			w.setNamedEntity(ne);
+			if(stemStage) w.setStem(stem);
+			if(posStage) w.setPOS(pos);
+			if(neStage) w.setNamedEntity(ne);
 
 			builder.addWord(w);
 		}
 
-		SemanticGraph dependencies = sen.get(CollapsedCCProcessedDependenciesAnnotation.class);
-		for(TypedDependency tdep : dependencies.typedDependencies()) {
-			int gi = tdep.gov().label().get(IndexAnnotation.class) - 1;
-			int di = tdep.dep().label().get(IndexAnnotation.class) - 1;
-			String r = tdep.reln().getShortName();
+		if(parseStage) {
+			SemanticGraph dependencies = sen.get(CollapsedCCProcessedDependenciesAnnotation.class);
+			for(TypedDependency tdep : dependencies.typedDependencies()) {
+				int gi = tdep.gov().label().get(IndexAnnotation.class) - 1;
+				int di = tdep.dep().label().get(IndexAnnotation.class) - 1;
+				String r = tdep.reln().getShortName();
 
-			builder.addDependency(gi, di, r);
+				builder.addDependency(gi, di, r);
+			}
 		}
 
 		return;
@@ -82,6 +84,12 @@ public final class PipelineProcessor implements Processor {
 	@Override
 	public void configure(Properties props) {
 		pipeline = new StanfordCoreNLP(props);
+		
+		String stages = props.getProperty("annotators");
+		stemStage = stages.contains("lemma");
+		neStage = stages.contains("ne");
+		posStage = stages.contains("pos");
+		parseStage = stages.contains("parse");
 	}
 
 }

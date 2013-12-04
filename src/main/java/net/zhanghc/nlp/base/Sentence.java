@@ -48,6 +48,10 @@ public final class Sentence implements Iterable<Token> {
 	public String getSource() {
 		return source;
 	}
+	
+	public int getOffset() {
+		return offset;
+	}
 
 	public static class Builder {
 		Sentence sentence;
@@ -62,7 +66,10 @@ public final class Sentence implements Iterable<Token> {
 		int eoff = 0;
 		public void addWord(Word word) {
 			int loc = plain.indexOf(word.token, woff);
-			woff += word.token.length();
+			if(loc == -1) {
+				return;
+			}
+			woff = loc + word.token.length();
 			word.offset = offset[loc];
 
 			for(int i = eoff; i < word.offset; i++) {
@@ -92,7 +99,7 @@ public final class Sentence implements Iterable<Token> {
 		int[] offset;
 		Entity[] entities;
 
-		static Pattern htPattern = Pattern.compile("(#[^#]+)[#\\s]");
+		static Pattern htPattern = Pattern.compile("(#[^#\\s]+)[#\\s]");
 		static Pattern rtPattern = Pattern.compile("(@[\\S]+)[\\s]");
 		static Pattern urlPattern = Pattern.compile("(http://[a-zA-Z0-9\\.]+/[a-zA-Z0-9]+)");
 

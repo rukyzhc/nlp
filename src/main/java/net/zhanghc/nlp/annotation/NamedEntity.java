@@ -2,7 +2,7 @@ package net.zhanghc.nlp.annotation;
 
 public class NamedEntity implements Annotation {
 	private String ne;
-	
+
 	public NamedEntity(String ne) {
 		this.ne = ne;
 	}
@@ -14,6 +14,11 @@ public class NamedEntity implements Annotation {
 
 	@Override
 	public String getValue() {
+		return ne;
+	}
+
+	@Override
+	public String toString() {
 		return ne;
 	}
 

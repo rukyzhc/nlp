@@ -16,5 +16,10 @@ public class Stem implements Annotation {
 	public String getValue() {
 		return stem;
 	}
+	
+	@Override
+	public String toString() {
+		return stem;
+	}
 
 }

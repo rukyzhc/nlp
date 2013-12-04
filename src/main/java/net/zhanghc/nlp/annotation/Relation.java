@@ -16,5 +16,10 @@ public class Relation implements Annotation {
 	public String getValue() {
 		return relation;
 	}
+	
+	@Override
+	public String toString() {
+		return relation;
+	}
 
 }

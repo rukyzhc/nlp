@@ -10,10 +10,6 @@ public class PartOfSpeech implements Annotation {
 	public boolean isNoun() {
 		return tag.charAt(0) == 'N';
 	}
-
-	public String toString() {
-		return tag;
-	}
 	
 	public char toShort() {
 		return tag.charAt(0);
@@ -26,6 +22,11 @@ public class PartOfSpeech implements Annotation {
 
 	@Override
 	public String getValue() {
+		return tag;
+	}
+	
+	@Override
+	public String toString() {
 		return tag;
 	}
 
