@@ -36,5 +36,12 @@ public class Document implements Iterable<Sentence> {
 	public Iterator<Sentence> iterator() {
 		return sentences.iterator();
 	}
+	
+	public void rebuild() {
+		for(Sentence sentence : sentences) {
+			sentence.owner = this;
+			sentence.rebuild();
+		}
+	}
 
 }

@@ -48,11 +48,17 @@ public final class Sentence implements Iterable<Token> {
 	public String getSource() {
 		return source;
 	}
-	
+
 	public int getOffset() {
 		return offset;
 	}
 
+	public void rebuild() {
+		for(Token token : tokens) {
+			token.owner = this;
+		}
+	}
+	
 	public static class Builder {
 		Sentence sentence;
 
@@ -64,7 +70,9 @@ public final class Sentence implements Iterable<Token> {
 
 		int woff;
 		int eoff = 0;
+		int sidx = -1;
 		public void addWord(Word word) {
+			sidx++;
 			int loc = plain.indexOf(word.token, woff);
 			if(loc == -1) {
 				return;
@@ -83,13 +91,19 @@ public final class Sentence implements Iterable<Token> {
 
 			word.index = sentence.tokens.size();
 			sentence.tokens.add(word);
+
+			wPtr[sidx] = word.index;
 		}
 
 		public void addDependency(int gindex, int dindex, String rel) {
 			Dependency dep = new Dependency();
 
-			dep.govIdx = gindex;
-			dep.depIdx = dindex;
+			dep.govIdx = wPtr[gindex];
+			dep.depIdx = wPtr[dindex];
+			if(dep.govIdx == -1 || dep.depIdx == -1) {
+				//FIXME: gov or dep word is not in token list.
+				return;
+			}
 			dep.relation = new Relation(rel);
 
 			sentence.dependencies.add(dep);
@@ -97,6 +111,7 @@ public final class Sentence implements Iterable<Token> {
 
 		String plain;
 		int[] offset;
+		int[] wPtr;
 		Entity[] entities;
 
 		static Pattern htPattern = Pattern.compile("(#[^#\\s]+)[#\\s]");
@@ -108,7 +123,9 @@ public final class Sentence implements Iterable<Token> {
 
 			byte[] tags = new byte[source.length()];
 			offset = new int[source.length()];
+			wPtr = new int[source.length()];
 			entities = new Entity[source.length()];
+			Arrays.fill(wPtr, -1);
 			Arrays.fill(tags, (byte)0);
 
 			match(source, htPattern, Entity.Type.HASHTAG, tags);

@@ -1,6 +1,11 @@
 NLP tool by zhanghc.net
 =======
 
+dependencies
+-------
+please clone following dependencies from github and install them into local repository by executing "mvn install".  
+git://github.com/rukyzhc/toolkit  
+
 external source
 -------
 for chinese model, please download specific version from  
