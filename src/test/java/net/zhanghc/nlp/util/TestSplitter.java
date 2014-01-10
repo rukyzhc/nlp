@@ -10,10 +10,12 @@ public class TestSplitter {
 
 	@Test
 	public void test() {
-		String s1 = "中华人民共和国，中央人民政府，现在成 立啦！！'. 我们就是 要求。 ";
+		String s1 = "中华人民共和国，中央人民政府，现在成 立啦！！'. 我们就是 要求。 \n\r 我们就是这么要求的\n 好的";
 		String[] ss1 = new String[] {
 				"中华人民共和国，中央人民政府，现在成 立啦！！'. ",
-				"我们就是 要求。 "
+				"我们就是 要求。 \n\r ",
+				"我们就是这么要求的\n ",
+				"好的"
 		};
 		String s2 = "This is what we want! This is the world?!Lucky!";
 		String[] ss2 = new String[] {

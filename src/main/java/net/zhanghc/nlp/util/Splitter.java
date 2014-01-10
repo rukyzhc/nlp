@@ -48,7 +48,7 @@ public interface Splitter {
 			s = e;
 			while(++e < source.length()) {
 				char c = source.charAt(e);
-				if(PunctuationUtil.isEndPunc(c)) {
+				if(PunctuationUtil.isEndPunc(c) || c == '\n' || c == '\r') {
 					break;
 				}
 			}
@@ -64,6 +64,9 @@ public interface Splitter {
 		}
 		
 		private boolean isSkipAfterEndPunc(char c) {
+			if(c == '\n' || c == '\r')
+				return true;
+			
 			switch(CharUtil.classify(c)) {
 			case Space:
 			case Punctuation:

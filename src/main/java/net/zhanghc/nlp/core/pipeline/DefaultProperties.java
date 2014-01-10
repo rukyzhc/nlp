@@ -11,6 +11,7 @@ public class DefaultProperties {
 		props.setProperty("segment.sighanCorporaDict", "edu/stanford/nlp/models/segmenter/chinese");
 		props.setProperty("segment.serDictionary", "edu/stanford/nlp/models/segmenter/chinese/dict-chris6.ser.gz");
 		props.setProperty("segment.sighanPostProcessing", "true");
+		props.setProperty("segment.verbose", "false");
 		props.setProperty("ssplit.isOneSentence", "true");
 		props.setProperty("pos.model", "edu/stanford/nlp/models/pos-tagger/chinese-distsim/chinese-distsim.tagger");
 		props.setProperty("ner.model", "edu/stanford/nlp/models/ner/chinese.misc.distsim.crf.ser.gz");
@@ -18,6 +19,7 @@ public class DefaultProperties {
 		props.setProperty("ner.useSUTime", "false");
 		props.setProperty("parse.model", "edu/stanford/nlp/models/lexparser/chinesePCFG.ser.gz");
 		props.setProperty("parse.flags", "");
+		props.setProperty("parse.debug", "false");
 		return props;
 	}
 	

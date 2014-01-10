@@ -38,7 +38,7 @@ public final class PipelineProcessor implements Processor {
 		if(plain.trim().length() == 0) {
 			return;
 		}
-		
+
 		Annotation annotation = new Annotation(plain);
 		pipeline.annotate(annotation);
 
