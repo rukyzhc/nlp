@@ -1,7 +1,5 @@
 package net.zhanghc.nlp.util;
 
-import static org.junit.Assert.*;
-
 import net.zhanghc.nlp.base.Document;
 import net.zhanghc.nlp.base.Sentence;
 import net.zhanghc.nlp.core.Preprocessor;
