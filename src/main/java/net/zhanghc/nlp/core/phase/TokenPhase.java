@@ -1,18 +1,16 @@
 package net.zhanghc.nlp.core.phase;
 
-import net.zhanghc.nlp.base.Sentence;
+import java.util.Properties;
 
-public class TokenPhase implements Phase {
+public abstract class TokenPhase extends AbstractPhase {
 
 	@Override
-	public Type getPhase() {
-		return Type.Token;
+	public Type getType() {
+		return Type.TOKENIZE;
 	}
-
-	@Override
-	public void annotate(Sentence sentence) {
-		// TODO Auto-generated method stub
-		
+	
+	public static TokenPhase create(Properties conf) {
+		return null;
 	}
 
 }

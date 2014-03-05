@@ -14,7 +14,8 @@ public class TestPersister {
 	@Test
 	public void test() {
 		Processor proc = new PipelineProcessor();
-		proc.configure(DefaultProperties.defaultEnglishProperties("tokenize, ssplit, pos, lemma, ner, parse"));
+		proc.configure(DefaultProperties.defaultEnglishProperties("tokenize, ssplit, pos, lemma"));
+//		proc.configure(DefaultProperties.defaultEnglishProperties("tokenize, ssplit, pos, lemma, ner, parse"));
 		String doc = "#TEST Sample tweet @romenesko (shares short excerpts from his online column): Josh Prager resigns from WSJ after 13 years; says he and the paper are no longer a good fit.";
 
 		Document document = Preprocessor.create(null, doc, Splitter.DefaultSplitter.instance());
