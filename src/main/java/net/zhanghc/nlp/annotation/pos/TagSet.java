@@ -1,6 +1,7 @@
 package net.zhanghc.nlp.annotation.pos;
 
 public enum TagSet {
-	ICT2_CN,
-	PT_CN,
+	BUILTIN_CN,
+	ICTCLAS_CN,
+	PENNTREE_CN,
 }
