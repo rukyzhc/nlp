@@ -1,17 +1,11 @@
 package net.zhanghc.nlp.data.base;
 
 public class Word {
-	protected Sentence owner;
-
 	protected String word;
 	protected String pos;
 	protected int index;
 
-	Word() {
-	}
-
-	public Word(Sentence owner, int index, String word, String pos) {
-		this.owner = owner;
+	public Word(int index, String word, String pos) {
 		this.index = index;
 		this.word = word;
 		this.pos = pos;
@@ -28,9 +22,14 @@ public class Word {
 	public int getIndex() {
 		return index;
 	}
-
-	public Sentence getOwner() {
-		return owner;
+	
+	public String toString() {
+		return String.format("%s/%s", word, pos);
+	}
+	
+	public static Word resume(int index, String str) {
+		int p = str.lastIndexOf('/');
+		return new Word(index, str.substring(0, p), str.substring(p + 1));
 	}
 
 }

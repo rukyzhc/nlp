@@ -30,6 +30,14 @@ public class Document implements Iterable<Sentence> {
 	public int length() {
 		return length;
 	}
+	
+	public String getID() {
+		return docID;
+	}
+	
+	public List<Sentence> getSentence() {
+		return sentences;
+	}
 
 	@Override
 	public Iterator<Sentence> iterator() {
