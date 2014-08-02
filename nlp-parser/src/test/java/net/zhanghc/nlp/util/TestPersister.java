@@ -6,6 +6,7 @@ import net.zhanghc.nlp.core.Preprocessor;
 import net.zhanghc.nlp.core.Processor;
 import net.zhanghc.nlp.core.pipeline.DefaultProperties;
 import net.zhanghc.nlp.core.pipeline.PipelineProcessor;
+import net.zhanghc.nlp.data.util.Splitter;
 
 import org.junit.Test;
 

@@ -1,11 +1,11 @@
 package net.zhanghc.nlp.util;
 
 import static org.junit.Assert.*;
-
 import net.zhanghc.nlp.core.Preprocessor;
 import net.zhanghc.nlp.core.Processor;
 import net.zhanghc.nlp.core.pipeline.DefaultProperties;
 import net.zhanghc.nlp.core.pipeline.PipelineProcessor;
+import net.zhanghc.nlp.data.util.Splitter;
 import net.zhanghc.nlp.annotation.Key;
 import net.zhanghc.nlp.base.Document;
 import net.zhanghc.nlp.base.Sentence;

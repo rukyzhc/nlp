@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.zhanghc.nlp.base.Document;
 import net.zhanghc.nlp.base.Sentence;
-import net.zhanghc.nlp.util.Splitter;
+import net.zhanghc.nlp.data.util.Splitter;
 
 public class Preprocessor {
 	

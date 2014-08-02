@@ -1,4 +1,4 @@
-package net.zhanghc.nlp.util;
+package net.zhanghc.nlp.data.util;
 
 public enum CharType {
 	Numeric,

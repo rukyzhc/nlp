@@ -1,8 +1,6 @@
-package net.zhanghc.nlp.util;
+package net.zhanghc.nlp.data.util;
 
 import static org.junit.Assert.*;
-
-import net.zhanghc.nlp.util.Splitter.DefaultSplitter;
 
 import org.junit.Test;
 
@@ -23,7 +21,7 @@ public class TestSplitter {
 				"This is the world?!",
 				"Lucky!"
 		};
-		Splitter splitter = DefaultSplitter.instance();
+		Splitter splitter = Splitter.DefaultSplitter.instance();
 		
 		splitter.setSource(s1);
 		int i = 0;
